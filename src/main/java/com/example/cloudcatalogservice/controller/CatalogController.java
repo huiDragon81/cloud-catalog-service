@@ -31,11 +31,11 @@ public class CatalogController {
     }
 
     @GetMapping("/catalogs")
-    public ResponseEntity<List<ResponseCatalog>> getUsers() {
+    public ResponseEntity<List<ResponseCatalog>> getCatalogs() {
 
-        Iterable<CatalogEntity> userList = catalogService.getAllCatalogs();
+        Iterable<CatalogEntity> catList = catalogService.getAllCatalogs();
         List<ResponseCatalog> result = new ArrayList<>();
-        userList.forEach(v -> {
+        catList.forEach(v -> {
             result.add(new ModelMapper().map(v, ResponseCatalog.class));
         });
         return ResponseEntity.status(HttpStatus.OK).body(result);
